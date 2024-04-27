@@ -1,15 +1,18 @@
 export type StatementTemplate = {
   propertyID: string;
-  propertyLabel: string;
-  valueDataType: string;
+  propertyLabel?: string;
+  mandatory?: string;
+  repeatable?: string;
+  valueNodeType?: string;
+  valueDataType?: string;
   valueShape?: string;
-  mandatory?: "true" | "false";
-  repeatable?: "true" | "false";
+  valueConstraint?: string;
+  valueConstraintType?: string;
 };
 
 export type Shape = {
-  shapeId: string;
-  shapeLabel: string;
+  shapeId?: string;
+  shapeLabel?: string;
   statement_templates: StatementTemplate[];
 };
 
