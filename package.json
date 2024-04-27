@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  },
+  "type": "module",
+  "scripts": {
+    "go": "node ./dist/index.js",
+    "gob": "node --inspect-brk ./dist/index.js"
+  }
+}

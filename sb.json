@@ -1,0 +1,105 @@
+{
+  "shapes": [
+    {
+      "shapeID": "bookShape",
+      "shapeLabel": "Book",
+      "statement_templates": [
+        {
+          "propertyID": "dct:title",
+          "propertyLabel": "Book title",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "dct:description",
+          "propertyLabel": "Book description",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "dct:date",
+          "propertyLabel": "Publication date",
+          "valueDataType": "xsd:date"
+        },
+        {
+          "propertyID": "dct:extent",
+          "propertyLabel": "Pages",
+          "valueDataType": "xsd:decimal"
+        },
+        {
+          "propertyID": "sdo:isbn",
+          "propertyLabel": "ISBN",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "dct:creator",
+          "propertyLabel": "Author",
+          "mandatory": "true",
+          "repeatable": "true",
+          "valueShape": "authorShape"
+        },
+        {
+          "propertyID": "dct:publisher",
+          "propertyLabel": "Publisher",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueShape": "publisherShape"
+        }
+      ]
+    },
+    {
+      "shapeID": "authorShape",
+      "shapeLabel": "Author",
+      "statement_templates": [
+        {
+          "propertyID": "foaf:name",
+          "propertyLabel": "Author name",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "foaf:mailbox",
+          "propertyLabel": "Email",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "foaf:accountName",
+          "propertyLabel": "User Name",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        }
+      ]
+    },
+    {
+      "shapeID": "publisherShape",
+      "shapeLabel": "Publisher",
+      "statement_templates": [
+        {
+          "propertyID": "sdo:name",
+          "propertyLabel": "Publisher name",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "sdo:location",
+          "propertyLabel": "Publisher place",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        }
+      ]
+    }
+  ],
+  "namespaces": {
+    "xsd:": "http://www.w3.org/2001/XMLSchema#",
+    "dct:": "http://purl.org/dc/terms/",
+    "foaf:": "http://xmlns.com/foaf/0.1/"
+  }
+}
