@@ -1,29 +1,5 @@
 import { Shape, Shapes, StatementTemplate } from ".";
 
-const html = `<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      td {
-      	margin: 25px;
-      } 
-      .shapeTable {
-      	border-style: solid;
-      	border-width: 2px;
-      	width: 100%;
-      }  
-      .statementTable {
-      	border-style: dotted;
-      	border-width: 2px;
-      	background: none;
-      	margin-left: 25px;
-      	width: 100%;
-      }
-      </style>
-      <title></title>
- </head>
- <body>`;
-
 export const renderStatement = (stmt: StatementTemplate): string => {
   return `
 <table class="statementTable">
@@ -37,11 +13,18 @@ export const renderStatement = (stmt: StatementTemplate): string => {
       propertyLabel "${stmt.propertyLabel}"
     </td>
   </tr>
-  <tr>
-    <td>
-      valueType "${stmt.valueDataType}"
-    </td>
-  </tr>
+
+  ${
+    stmt.valueDataType
+      ? `
+    <tr>
+      <td>
+        valueType "${stmt.valueDataType}"
+      </td>
+    </tr>`
+      : ""
+  }
+
   ${
     stmt.valueShape
       ? `
@@ -81,7 +64,7 @@ export const renderShape = (shape: Shape, n: number): string => {
 <table class="shapeTable">
   <tr>
     <td>
-      <strong>shapeID</strong> "${shape.shapeId}"
+      <strong>shapeID</strong> "${shape.shapeID}"
     </td>
   </tr>
   <tr>
@@ -95,9 +78,6 @@ export const renderShape = (shape: Shape, n: number): string => {
 </table>`.trim();
 };
 
-export const render = (shapes: Shapes) => {
-  const shapeHtml = shapes.shapes.map((s, i) => renderShape(s, i + 1)).join("");
-  const finalHtml = html + shapeHtml + "</body></html>";
-
-  return finalHtml;
+export const renderBody = (shapes: Shapes) => {
+  return shapes.shapes.map((s, i) => renderShape(s, i + 1)).join("");
 };

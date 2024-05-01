@@ -11,7 +11,7 @@ export type StatementTemplate = {
 };
 
 export type Shape = {
-  shapeId?: string;
+  shapeID?: string;
   shapeLabel?: string;
   statement_templates: StatementTemplate[];
 };
@@ -22,13 +22,19 @@ export type Shapes = {
 };
 
 import fs from "node:fs/promises";
-import { render } from "./render.js";
+import { renderBody } from "./render.js";
 
 async function main() {
   const data = await fs.readFile("sb.json", { encoding: "utf8" });
+  const layout = await fs.readFile("layout.html", { encoding: "utf8" });
+
+  const [start, end] = layout.split("{}");
+
   const json = JSON.parse(data) as Shapes;
 
-  const html = render(json);
+  const body = renderBody(json);
+
+  const html = [start, body, end].join("");
 
   await fs.writeFile("out.html", html);
 }
