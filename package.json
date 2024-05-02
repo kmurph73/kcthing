@@ -1,11 +1,16 @@
 {
   "devDependencies": {
     "@types/node": "^20.12.7",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "type": "module",
   "scripts": {
     "go": "node ./dist/index.js",
     "gob": "node --inspect-brk ./dist/index.js"
-  }
+  },
+  "dependencies": {}
 }

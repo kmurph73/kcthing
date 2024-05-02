@@ -1,14 +1,4 @@
-export type StatementTemplate = {
-  propertyID: string;
-  propertyLabel?: string;
-  mandatory?: string;
-  repeatable?: string;
-  valueNodeType?: string;
-  valueDataType?: string;
-  valueShape?: string;
-  valueConstraint?: string;
-  valueConstraintType?: string;
-};
+export type StatementTemplate = Record<string, string>;
 
 export type Shape = {
   shapeID?: string;
@@ -23,6 +13,8 @@ export type Shapes = {
 
 import fs from "node:fs/promises";
 import { renderBody } from "./render.js";
+import { renderToStaticMarkup } from "react-dom/server";
+import { Doc } from "./Doc.js";
 
 async function main() {
   const data = await fs.readFile("sb.json", { encoding: "utf8" });
@@ -32,7 +24,8 @@ async function main() {
 
   const json = JSON.parse(data) as Shapes;
 
-  const body = renderBody(json);
+  const docs = Doc({ shapes: json });
+  const body = renderToStaticMarkup(docs);
 
   const html = [start, body, end].join("");
 

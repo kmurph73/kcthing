@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      td {
+        margin: 25px;
+      }
+      .shapeDiv {
+        border-style: solid;
+        border-width: 2px;
+        width: 100%;
+      }
+      .statementDiv {
+        border-style: dotted;
+        border-width: 2px;
+        padding-left: 50px;
+        width: 100%;
+      }
+      .property {
+        font-weight: bold;
+        margin-left: 25px;
+      }
+      .value {
+        margin-left: 100 px;
+      }
+      .shapeProperty {
+        font-weight: bold;
+        border-bottom-style: dotted;
+      }
+    </style>
+    <title></title>
+  </head>
+  <body>
+    <div class="shapeDiv">
+      <span class="shapeProperty">Scholarly Resource</span> (scholarlyResource)
+      <div class="statementDiv">
+        <span class="property">Abstract</span>
+        <span class="label">(dct:abstract)</span>
+        <ul>
+          <li>valueType "xsd:string"</li>
+          <li>note "Free text"</li>
+        </ul>
+        <span class="property">Access Rights</span> (dct:dct:accessRight)
+        <ul>
+          <li>valueDataType "xsd:anyURI"</li>
+          <li>
+            valueConstraint
+            "http://vocabularies.coar-repositories.org/documentation/access_rights/"
+          </li>
+          <li>valueConstraintType "iristem"</li>
+          <li>note "A term from COAR vocabulary"</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
