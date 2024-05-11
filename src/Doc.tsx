@@ -19,7 +19,7 @@ function renderStatement(stmt: StatementTemplate): JSX.Element {
         {entries.map(([k, v]) =>
           keysToIgnore.includes(k) ? null : (
             <li key={`key_${k}`}>
-              {k} "{v}"
+              <i>{k}</i> "{v}"
             </li>
           )
         )}
