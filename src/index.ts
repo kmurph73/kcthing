@@ -12,7 +12,6 @@ export type Shapes = {
 };
 
 import fs from "node:fs/promises";
-import { renderBody } from "./render.js";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Doc } from "./Doc.js";
 
