@@ -1,15 +1,13 @@
 Install node js: https://nodejs.org/en
 
-Install yarn: `npm install --global yarn`
+Install typescript: `npm install --global typescript`
 
-Install typescript: `yarn global add typescript`
-
-Install dependencies (execute in directory of this project): `yarn`
+Install dependencies (execute in directory of this project): `npm i`
 
 Compile and watch project: `tsc -w`
 
 sdfasdf
 
-In another tab execute: `yarn go`
+In another tab execute: `npm run go`
 
 This will transform `sb.json` into `out.html`

@@ -6,3 +6,4 @@ doctests
 yarn.lock
 .DS_Store
 out.html
+package-lock.json
