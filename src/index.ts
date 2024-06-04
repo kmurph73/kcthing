@@ -28,7 +28,7 @@ async function main() {
 
   const html = [start, body, end].join("");
 
-  await fs.writeFile("out.html", html);
+  await fs.writeFile("index.html", html);
 }
 
 await main();
