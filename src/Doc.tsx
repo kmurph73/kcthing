@@ -3,27 +3,30 @@ import { Shape, Shapes, StatementTemplate } from ".";
 type Props = {
   shapes: Shapes;
 };
-
 let num = 0;
+const keysToIgnore = ["propertyID", "propertyLabel"];
+
 function renderStatement(stmt: StatementTemplate): JSX.Element {
   const entries = Object.entries(stmt);
-  const keysToIgnore = ["propertyID", "propertyLabel"];
-
   return (
     <div key={`stmt_${num++}`}>
-      <span className="property">{stmt.propertyID}</span>
-      <span className="label" style={{ marginLeft: 5 }}>
-        ({stmt.propertyLabel})
-      </span>
-      <ul>
-        {entries.map(([k, v]) =>
-          keysToIgnore.includes(k) ? null : (
-            <li key={`key_${k}`}>
-              <i>{k}</i> "{v}"
-            </li>
-          )
-        )}
-      </ul>
+      <div className="wrapper">
+        <span className="label" style={{ marginLeft: 5 }}>
+          {stmt.propertyLabel}{" "}
+        </span>
+        <span className="property">
+          ({stmt.propertyID})
+          <ul>
+            {entries.map(([k, v]) =>
+              keysToIgnore.includes(k) ? null : (
+                <li key={`key_${k}`}>
+                  <i>{k}</i> "{v}"
+                </li>
+              )
+            )}
+          </ul>
+        </span>
+      </div>
     </div>
   );
 }

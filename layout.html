@@ -2,12 +2,9 @@
 <html>
   <head>
     <style>
-      td {
-        margin: 25px;
-      }
       .shapeDiv {
         margin-top: 5px;
-        border-style: solid;
+        border-style: groove;
         border-width: 2px;
         width: 100%;
       }
@@ -15,16 +12,24 @@
         padding-left: 50px;
         width: 100%;
       }
-      .property {
+      .value {
         font-weight: bold;
         margin-left: 25px;
       }
-      .value {
-        margin-left: 100 px;
+      .property {
+        margin-left: 20px;
+      }
+      .label {
+        font-weight: bold;
       }
       .shapeProperty {
         font-weight: bold;
-        border-bottom-style: dotted;
+        border-bottom-style: dashed;
+        font-size: large;
+      }
+      .wrapper {
+        display: grid;
+        grid-template-columns: 100px 300px;
       }
     </style>
     <title></title>

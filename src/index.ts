@@ -16,7 +16,15 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { Doc } from "./Doc.js";
 
 async function main() {
-  const data = await fs.readFile("sb.json", { encoding: "utf8" });
+  const filename = process.argv[2];
+
+  if (!filename || filename.trim().length === 0) {
+    throw new Error(
+      "you must pass in a filename to the command line, eg npm run go sb.json"
+    );
+  }
+
+  const data = await fs.readFile(filename, { encoding: "utf8" });
   const layout = await fs.readFile("layout.html", { encoding: "utf8" });
 
   const [start, end] = layout.split("{}");
