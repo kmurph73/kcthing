@@ -6,6 +6,6 @@ Install dependencies (execute in directory of this project): `npm i`
 
 Compile and watch project: `tsc -w`
 
-In another tab execute: `npm run go`
+In another tab execute: `npm run go sb.json`
 
-This will transform `sb.json` into `out.html`
+This will transform `sb.json` into `index.html`
