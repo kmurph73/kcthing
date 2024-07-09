@@ -1,0 +1,142 @@
+{
+  "shapes": [
+    {
+      "shapeID": "CourseInstance",
+      "shapeLabel": "Course Offering",
+      "statement_templates": [
+        {
+          "propertyID": "rdf:type",
+          "propertyLabel": "instance of",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueNodeType": "iri",
+          "valueConstraint": "sdo:CourseInstance"
+        },
+        {
+          "propertyID": "sdo:name",
+          "propertyLabel": "course name",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueNodeType": "literal",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "sdo:startDate",
+          "propertyLabel": "start date",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueNodeType": "literal",
+          "valueDataType": "xsd:date",
+          "note": "date must be in the future"
+        },
+        {
+          "propertyID": "sdo:endDate",
+          "propertyLabel": "end date",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueNodeType": "literal",
+          "valueDataType": "xsd:date",
+          "note": "must be after start date"
+        },
+        {
+          "propertyID": "sdo:about",
+          "propertyLabel": "subject",
+          "mandatory": "true",
+          "repeatable": "true",
+          "valueNodeType": "iri",
+          "valueShape": "Subject"
+        },
+        {
+          "propertyID": "sdo:instructor",
+          "propertyLabel": "primary instructor",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueNodeType": "iri",
+          "valueShape": "Instructor",
+          "note": "list only the instructor responsible for the course"
+        },
+        {
+          "propertyID": "sdo:location",
+          "propertyLabel": "location",
+          "mandatory": "true",
+          "repeatable": "true",
+          "valueNodeType": "iri",
+          "valueShape": "Location",
+          "note": "repeat only if a single course offering requires attendance in >1 place."
+        }
+      ]
+    },
+    {
+      "shapeID": "Subject",
+      "shapeLabel": "Course Subject",
+      "statement_templates": [
+        {
+          "propertyID": "rdf:type",
+          "propertyLabel": "instance of",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueNodeType": "iri",
+          "valueConstraint": "skos:Concept"
+        }
+      ]
+    },
+    {
+      "shapeID": "Location",
+      "shapeLabel": "Course Location",
+      "statement_templates": [
+        {
+          "propertyID": "rdf:type",
+          "propertyLabel": "instance of",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueNodeType": "iri",
+          "valueConstraint": "sdo:Place,sdo:VirtualLocation"
+        }
+      ]
+    },
+    {
+      "shapeID": "Instructor",
+      "shapeLabel": "Primary Instructor",
+      "statement_templates": [
+        {
+          "propertyID": "rdf:type",
+          "propertyLabel": "instance of",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueNodeType": "iri",
+          "valueConstraint": "sdo:Person"
+        },
+        {
+          "propertyID": "sdo:givenName",
+          "propertyLabel": "given name",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueNodeType": "literal",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "sdo:familyName",
+          "propertyLabel": "family name",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueNodeType": "literal",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "sdo:email",
+          "propertyLabel": "email address",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueNodeType": "literal",
+          "valueDataType": "xsd:string",
+          "note": "must be format [.+]@[.+].[.+]"
+        }
+      ]
+    }
+  ],
+  "namespaces": {
+    "xsd:": "http://www.w3.org/2001/XMLSchema#",
+    "skos:": "http://www.w3.org/2004/02/skos/core#",
+    "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  }
+}

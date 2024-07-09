@@ -1,0 +1,850 @@
+{
+  "shapes": [
+    {
+      "shapeID": "resource",
+      "shapeLabel": "Datacite resource",
+      "statement_templates": [
+        {
+          "propertyID": "language",
+          "propertyLabel": "language",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:language"
+        },
+        {
+          "propertyID": "publicationYear",
+          "propertyLabel": "publication year",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:token",
+          "valueConstraint": "/[\\d]{4}/",
+          "valueConstraintType": "pattern"
+        },
+        {
+          "propertyID": "version",
+          "propertyLabel": "version",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "publisher",
+          "propertyLabel": "publisher",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraintType": "pattern",
+          "note": "In fact, the constraint is non-zero length, but the xs:string type does not normalize whitespace, so a single blank character also satisfies the constraint."
+        },
+        {
+          "propertyID": "resourceType",
+          "propertyLabel": "resource type",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "resourceTypeGeneral",
+          "propertyLabel": "resource type-general",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "identifier",
+          "propertyLabel": "identifer",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": "/.+/",
+          "valueConstraintType": "pattern"
+        },
+        {
+          "propertyID": "identifierType",
+          "propertyLabel": "identifier type",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyType"
+        },
+        {
+          "propertyID": "size",
+          "propertyLabel": "size",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "format",
+          "propertyLabel": "format",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "creator",
+          "mandatory": "true",
+          "repeatable": "true",
+          "valueShape": "creator-S"
+        },
+        {
+          "propertyID": "titles",
+          "mandatory": "true",
+          "repeatable": "true",
+          "valueShape": "title-S"
+        },
+        {
+          "propertyID": "subjects",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "subjects-S"
+        },
+        {
+          "propertyID": "contributors",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "contributor-S"
+        },
+        {
+          "propertyID": "dates",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "dates-S"
+        },
+        {
+          "propertyID": "alternateIdentifiers",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "alternateIdentifiers-S"
+        },
+        {
+          "propertyID": "relatedIdentifiers",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "relatedIdentifiers-S"
+        },
+        {
+          "propertyID": "rightsList",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueShape": "rightsList-S"
+        },
+        {
+          "propertyID": "descriptions",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "descriptions-S"
+        },
+        {
+          "propertyID": "geoLocations",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "geoLocations-S"
+        },
+        {
+          "propertyID": "fundingReferences",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueShape": "fundingReferences-S"
+        },
+        {
+          "propertyID": "relatedItems",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueShape": "relatedItems-S"
+        }
+      ]
+    },
+    {
+      "shapeID": "creators-S",
+      "shapeLabel": "Creators",
+      "statement_templates": [
+        {
+          "propertyID": "creatorName",
+          "propertyLabel": "creator name",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "givenName",
+          "propertyLabel": "given name",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyType",
+          "note": "Not a valid data type for TAP"
+        },
+        {
+          "propertyID": "familyName",
+          "propertyLabel": "family name",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyType",
+          "note": "Not a valid data type for TAP"
+        },
+        {
+          "propertyID": "nameType",
+          "propertyLabel": "name type",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": [
+            "Organizational,",
+            "Personal"
+          ],
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "nameIdentifier",
+          "propertyLabel": "name identifier",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueDataType": "xsd:string",
+          "valueConstraint": "/.+/",
+          "valueConstraintType": "pattern",
+          "note": "In fact, the constraint is non-zero length, but the xs:string type does not normalize whitespace, so a single blank character also satisfies the constraint."
+        },
+        {
+          "propertyID": "nameIdentifierScheme",
+          "propertyLabel": "name identifier scheme",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "schemeURI",
+          "propertyLabel": "scheme URI",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyURI"
+        },
+        {
+          "propertyID": "affiliation",
+          "propertyLabel": "affiliation",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "affiliation-S"
+        }
+      ]
+    },
+    {
+      "shapeID": "affiliation-S",
+      "shapeLabel": "Affiliation",
+      "statement_templates": [
+        {
+          "propertyID": "affiliationIdentifier",
+          "propertyLabel": "affiliation",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": "/.+/",
+          "valueConstraintType": "pattern",
+          "note": "In fact, the constraint is non-zero length, but the xs:string type does not normalize whitespace, so a single blank character also satisfies the constraint."
+        },
+        {
+          "propertyID": "affiliationIdentifierScheme",
+          "propertyLabel": "affiliation Identifier Scheme",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "schemeURI",
+          "propertyLabel": "schemeURI",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyURI"
+        }
+      ]
+    },
+    {
+      "shapeID": "title-S",
+      "shapeLabel": "Titles",
+      "statement_templates": [
+        {
+          "propertyID": "title",
+          "propertyLabel": "title",
+          "mandatory": "true",
+          "repeatable": "true",
+          "valueDataType": "xsd:string",
+          "note": "This is not required to be non-empty or non-blank."
+        },
+        {
+          "propertyID": "titleType",
+          "propertyLabel": "title type",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": [
+            "Alternative",
+            "Title,",
+            "Subtitle,",
+            "Translated",
+            "Title,",
+            "Other"
+          ],
+          "valueConstraintType": "picklist"
+        }
+      ]
+    },
+    {
+      "shapeID": "subject-S",
+      "shapeLabel": "Subjects",
+      "statement_templates": [
+        {
+          "propertyID": "subject",
+          "propertyLabel": "subject",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "subjectScheme",
+          "propertyLabel": "subject scheme",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anySimpleType",
+          "note": "Not a valid data type for TAP"
+        },
+        {
+          "propertyID": "schemeURI",
+          "propertyLabel": "scheme URI",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyURI"
+        },
+        {
+          "propertyID": "valueURI",
+          "propertyLabel": "value URI",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyURI"
+        },
+        {
+          "propertyID": "classificationCode",
+          "propertyLabel": "classification code",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyURI",
+          "note": "This appears to be an error in the XSD schema - the type should be \"xsd:string\"."
+        }
+      ]
+    },
+    {
+      "shapeID": "contributors-S",
+      "shapeLabel": "Contributors",
+      "statement_templates": [
+        {
+          "propertyID": "contributorName",
+          "propertyLabel": "Contributor name",
+          "mandatory": "true",
+          "repeatable": "true",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "contributorType",
+          "propertyLabel": "contributor type",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueConstraint": [
+            "[link]"
+          ],
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "givenName",
+          "propertyLabel": "given name",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "familyName",
+          "propertyLabel": "family name",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "contributorNameType",
+          "propertyLabel": "name type",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueConstraint": [
+            "Organizational,",
+            "Personal"
+          ],
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "nameIdentifier",
+          "propertyLabel": "name identifier",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueConstraint": "/.+/",
+          "valueConstraintType": "pattern"
+        },
+        {
+          "propertyID": "nameIdentifierScheme",
+          "propertyLabel": "name identifier scheme",
+          "mandatory": "true",
+          "repeatable": "false"
+        },
+        {
+          "propertyID": "schemeURI",
+          "propertyLabel": "scheme URI",
+          "mandatory": "false",
+          "repeatable": "false"
+        },
+        {
+          "propertyID": "affiliation",
+          "propertyLabel": "affiliation",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueConstraint": "/.+/",
+          "valueConstraintType": "pattern"
+        },
+        {
+          "propertyID": "nameType",
+          "propertyLabel": "nameType",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": [
+            "Organizational,",
+            "Personal"
+          ],
+          "valueConstraintType": "picklist"
+        }
+      ]
+    },
+    {
+      "shapeID": "dates-S",
+      "shapeLabel": "Dates",
+      "statement_templates": [
+        {
+          "propertyID": "date",
+          "propertyLabel": "date",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "dateType",
+          "propertyLabel": "date type",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": [
+            "Accepted,",
+            "Available,",
+            "Collected,",
+            "Copyrighted,",
+            "Created,",
+            "Issued,",
+            "Other,",
+            "Submitted,",
+            "Updated,",
+            "Valid,",
+            "Withdrawn"
+          ],
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "dateInformation",
+          "propertyLabel": "date information",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anySimpleType",
+          "note": "Not a valid data type for TAP"
+        }
+      ]
+    },
+    {
+      "shapeID": "alternateidentifier-S",
+      "shapeLabel": "Alternate Identifiers",
+      "statement_templates": [
+        {
+          "propertyID": "alternateIdentifier",
+          "propertyLabel": "alternateIdentifier",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "alternateIdentifierType",
+          "propertyLabel": "alternateIdentifierType",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:anySimpleType",
+          "note": "Not a valid data type for TAP"
+        }
+      ]
+    },
+    {
+      "shapeID": "relatedIdentifier-S",
+      "shapeLabel": "Related Identifiers",
+      "statement_templates": [
+        {
+          "propertyID": "relatedIdentifier",
+          "propertyLabel": "related identifier",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "resourceTypeGeneral",
+          "propertyLabel": "general resource type",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": [
+            "[link]"
+          ],
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "relatedIdentifierType",
+          "propertyLabel": "related identifier type",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": [
+            "[link]"
+          ],
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "relationType",
+          "propertyLabel": "relationType",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": [
+            "[link]"
+          ],
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "relatedMetadataScheme",
+          "propertyLabel": "related metadata scheme",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anySimpleType"
+        },
+        {
+          "propertyID": "schemeURI",
+          "propertyLabel": "scheme URI",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyURI"
+        },
+        {
+          "propertyID": "schemeType",
+          "propertyLabel": "scheme type",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anySimpleType"
+        }
+      ]
+    },
+    {
+      "shapeID": "rightsList-S",
+      "shapeLabel": "Rights List",
+      "statement_templates": [
+        {
+          "propertyID": "rights",
+          "propertyLabel": "rights",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "note": "The first rights listed is treated as copyright."
+        },
+        {
+          "propertyID": "schemeURI",
+          "propertyLabel": "rights URI",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyURI"
+        },
+        {
+          "propertyID": "rightsIdentifier",
+          "propertyLabel": "rights Identifier",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anySimpleType",
+          "note": "Not a valid data type for TAP"
+        },
+        {
+          "propertyID": "rightsIdentifierScheme",
+          "propertyLabel": "rights Identifier Scheme",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anySimpleType",
+          "note": "Not a valid data type for TAP"
+        }
+      ]
+    },
+    {
+      "shapeID": "descriptions-S",
+      "shapeLabel": "Descriptions",
+      "statement_templates": [
+        {
+          "propertyID": "description",
+          "propertyLabel": "description",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "[mixed content]",
+          "note": "Not sure if this is a valid type for TAP or not."
+        },
+        {
+          "propertyID": "descriptionType",
+          "propertyLabel": "description Type",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": [
+            "Abstract,",
+            "Methods,",
+            "SeriesInformation,",
+            "TableOfContents,",
+            "TechnicalInfo,",
+            "Other"
+          ],
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "br",
+          "propertyLabel": "??",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:language"
+        }
+      ]
+    },
+    {
+      "shapeID": "fundingReferences-S",
+      "shapeLabel": "Funding References",
+      "statement_templates": [
+        {
+          "propertyID": "funderName",
+          "propertyLabel": "funderName",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": "/.+/",
+          "valueConstraintType": "pattern",
+          "note": "In fact, the constraint is non-zero length, but the xs:string type does not normalize whitespace, so a single blank character also satisfies the constraint."
+        },
+        {
+          "propertyID": "awardTitle",
+          "propertyLabel": "awardTitle",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:any",
+          "note": "Not a valid data type for TAP"
+        },
+        {
+          "propertyID": "funderIdentifier",
+          "propertyLabel": "funderIdentifier",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "funderIdentifierType",
+          "propertyLabel": "funderIdentifierType",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string",
+          "valueConstraint": [
+            "ISNI,",
+            "GRID,",
+            "ROR,",
+            "Crossref",
+            "Funder",
+            "ID,",
+            "Other"
+          ],
+          "valueConstraintType": "picklist"
+        },
+        {
+          "propertyID": "schemeURI",
+          "propertyLabel": "schemeURI",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyURI"
+        },
+        {
+          "propertyID": "awardNumber",
+          "propertyLabel": "awardNumber",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:string"
+        },
+        {
+          "propertyID": "awardURI",
+          "propertyLabel": "awardURI",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueDataType": "xsd:anyURI"
+        }
+      ]
+    },
+    {
+      "shapeID": "geoLocation-S",
+      "shapeLabel": "geolocation-S",
+      "statement_templates": [
+        {
+          "propertyID": "geoLocationPlace",
+          "propertyLabel": "GeoLocation Place",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueDataType": "xsd:anyType",
+          "note": "Not a valid data type for TAP"
+        },
+        {
+          "propertyID": "point",
+          "propertyLabel": "Geolocation Point",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "geoLocationPoint-S"
+        },
+        {
+          "propertyID": "box",
+          "propertyLabel": "Geolocation Box",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "geoLocationBox-S"
+        }
+      ]
+    },
+    {
+      "shapeID": "geoLocationPoint-S",
+      "shapeLabel": "Geolocation Point",
+      "statement_templates": [
+        {
+          "propertyID": "pointLongitude",
+          "propertyLabel": "pointLongitude",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -180; x <= 180"
+        },
+        {
+          "propertyID": "pointLatitude",
+          "propertyLabel": "pointLatitude",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -90; x <= 90"
+        }
+      ]
+    },
+    {
+      "shapeID": "geoLocationBox-S",
+      "shapeLabel": "Geolocation Box",
+      "statement_templates": [
+        {
+          "propertyID": "westBoundLongitude",
+          "propertyLabel": "westBoundLongitude",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -180; x <= 180"
+        },
+        {
+          "propertyID": "eastBoundLongitue",
+          "propertyLabel": "eastBoundLongitue",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -180; x <= 180"
+        },
+        {
+          "propertyID": "southBoundLatitude",
+          "propertyLabel": "southBoundLatitude",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -90; x <= 90"
+        },
+        {
+          "propertyID": "northBoundLatitude",
+          "propertyLabel": "northBoundLatitude",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -90; x <= 90"
+        }
+      ]
+    },
+    {
+      "shapeID": "geoLocationPolygon-S",
+      "shapeLabel": "Geolocation Polygon",
+      "statement_templates": [
+        {
+          "propertyID": "geoLocationPolygon",
+          "mandatory": "false",
+          "repeatable": "true",
+          "valueShape": "polygonPoint-S",
+          "note": "Requires 4 occurrences"
+        },
+        {
+          "propertyID": "geoLocationPolygon",
+          "mandatory": "false",
+          "repeatable": "false",
+          "valueShape": "inPolygonPoint-S"
+        }
+      ]
+    },
+    {
+      "shapeID": "polygonPoint-S",
+      "shapeLabel": "Polygon Point",
+      "statement_templates": [
+        {
+          "propertyID": "pointLongitude",
+          "propertyLabel": "pointLongitude",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -180; x <= 180"
+        },
+        {
+          "propertyID": "pointLatitude",
+          "propertyLabel": "pointLatitude",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -90; x <= 90"
+        }
+      ]
+    },
+    {
+      "shapeID": "inPolygonPoint-S",
+      "shapeLabel": "inPolygon Point",
+      "statement_templates": [
+        {
+          "propertyID": "pointLongitude",
+          "propertyLabel": "pointLongitude",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -180; x <= 180"
+        },
+        {
+          "propertyID": "pointLatitude",
+          "propertyLabel": "pointLatitude",
+          "mandatory": "true",
+          "repeatable": "false",
+          "valueDataType": "xsd:float",
+          "valueConstraint": "x >= -90; x <= 90"
+        }
+      ]
+    }
+  ],
+  "namespaces": {
+    "xsd:": "http://www.w3.org/2001/XMLSchema#"
+  }
+}
